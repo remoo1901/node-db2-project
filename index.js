@@ -1,10 +1,13 @@
 const express = require("express")
+const carsRouter = require("./cars/cars-router")
 
 const server = express()
 
-const PORT = process.env.PORT || 5000;
+const port = process.env.PORT || 5005;
 
 server.use(express.json())
+
+server.use("/", carsRouter)
 
 server.use((err, req, res, next) => {
     console.log(err)
@@ -16,6 +19,6 @@ server.use((err, req, res, next) => {
 
 
 
-server.listen(PORT, () => {
-    console.log(`\n== API running on port ${PORT} ==\n`)
+server.listen(port, () => {
+    console.log(`\n== API running on port ${port} ==\n`)
 })

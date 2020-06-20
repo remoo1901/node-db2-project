@@ -1,7 +1,7 @@
 const express = require("express");
 const db = require("../data/config");
 
-const router = xpress - Router();
+const router = express.Router();
 
 //==================
 // GET Cars
@@ -9,7 +9,13 @@ const router = xpress - Router();
 
 router.get("/", async (req, res, next) => {
   try {
+    const car = await db("cars")
+    res.json(car)
+
   } catch (err) {
     next(err);
   }
 });
+
+
+module.exports = router
