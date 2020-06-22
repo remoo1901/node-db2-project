@@ -43,23 +43,33 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-
 //==================
 //  UPDATE Car (PUT)
 //==================
 
 router.put("/:id", async (req, res, next) => {
-  try{
-    const updated = await db("cars").where(req.params).update(req.body)
+  try {
+    const updated = await db("cars").where(req.params).update(req.body);
 
-    res.status(200).json(updated)
-
-  }catch(err){
-    next(err)
+    res.status(200).json(updated);
+  } catch (err) {
+    next(err);
   }
-})
+});
 
+//==================
+//  DELETE Car (DELETE)
+//==================
 
+router.delete("/:id", async (req, res, next) => {
+  try {
+    const deleted = await db("cars").where(req.params).delete(req.body);
+
+    res.status(200).json(deleted);
+  } catch (err) {
+    next(err);
+  }
+});
 
 module.exports = router;
 
